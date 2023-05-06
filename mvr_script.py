@@ -82,10 +82,16 @@ print("MAE: ", "{:.2f}".format(mean_absolute_error(y_valid, y_pred)))
 print("Mean squared error: %.2f" % mean_squared_error(y_valid, y_pred))
 print("Coefficient of determination: %.2f" % r2_score(y_valid, y_pred))
 
+#Get data ready for plotting
+y_pred_df = pd.DataFrame(data=y_pred, index=X_valid.index)
+y_pred_df.columns = ["body_mass_g"]
+merged_df = pd.concat([X_valid, y_pred_df], axis=1)
+
+
 # # Dreapta de regresie
 fig1 = plt.figure("Figure 1")
-plt.scatter(X_valid['flipper_length_mm'], y_valid, color="black")
-plt.plot(X_valid['flipper_length_mm'], y_pred, color="blue", linewidth=1)
+plt.scatter(merged_df['flipper_length_mm'], y_valid, color="black")
+plt.plot(merged_df['flipper_length_mm'].sort_values(), merged_df['body_mass_g'].sort_values(), color="blue", linewidth=3)
 plt.title('Regression line', fontsize=20)
 plt.xlabel('Flipper length [mm]')
 plt.ylabel('Body mass [g]')
