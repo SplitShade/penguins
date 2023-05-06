@@ -102,8 +102,8 @@ plt.yticks(())
 
 
 # #matricea de corelare
-# corr =  df[['culmen_length_mm', 'flipper_length_mm','body_mass_g']].corr()  
-# print('Pearson correlation coefficient matrix for each independent variable: \n', corr)  
+corr =  penguin_data[['culmen_length_mm', 'flipper_length_mm','body_mass_g']].corr()  
+print('Pearson correlation coefficient matrix for each independent variable: \n', corr)  
   
  
 # masking = np.zeros_like(corr, dtype = bool)  
